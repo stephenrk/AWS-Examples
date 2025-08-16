@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+echo "== delete objects =="
+
+if [ -z "$1" ]; then
+    echo "There is no bucket name provided. eg ./delete-objects my-new-bucket"
+    exit 1
+fi
+
+aws s3 rm s3://$1 --recursive

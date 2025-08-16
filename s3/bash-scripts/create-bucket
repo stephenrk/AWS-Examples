@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+echo "== create bucket =="
+
+if [ -z "$1" ]; then
+    echo "There is no bucket name provided. eg ./create-bucket.sh my-new-bucket"
+    exit 1
+fi
+
+## https://docs.aws.amazon.com/cli/latest/reference/s3api/create-bucket.html
+
+aws s3api create-bucket \
+--bucket $1 \
+--region sa-east-1 \
+--create-bucket-configuration LocationConstraint=sa-east-1 \
+--query 'Location' \
+--output text

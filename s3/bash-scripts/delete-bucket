@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+echo "== delete bucket =="
+
+if [ -z "$1" ]; then
+    echo "There is no bucket name provided. eg ./delete-bucket.sh my-new-bucket"
+    exit 1
+fi
+
+## https://docs.aws.amazon.com/cli/latest/reference/s3api/delete-bucket.html
+
+aws s3api delete-bucket \
+--bucket $1
